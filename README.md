@@ -82,7 +82,7 @@ Please report any build issues, or issues in general about this application to t
 
 ---
 
-# [Goals](projects/)
+# [Goals](https://github.com/InstanceGaming/Mapzip/projects/1)
 
 - [x] Make the installer completely functional.
 - [x] Make the solution easy to use for inexperienced users.
