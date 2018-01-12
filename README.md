@@ -23,6 +23,18 @@ Last updated January 12th, 2018 - Current application version **1.2.0.0**
 
 ---
 
+# Command-line arguments
+ 
+ Argument            | Description                                                                 | Value type 
+ ------------------- | --------------------------------------------------------------------------- | ----------
+ `[-c, --config]`    | Define a custom config file path. (Realative to temp folder)                | String, Path
+ `[-d, --data]`      | Define a custom path to the profile data file. (Realative to temp folder)   | String, Path
+ `[-s. --silent]`    | Bypass confirmation message. **Partially implemented**                      | N/A
+ `[-u, --uninstall]` | Uninstall the associated world from the game. **Not implemented**           | N/A
+ `[-h, --help]`      | Argument usage message.                                                     | N/A
+
+---
+
 # Installer data
 * **config.txt** - Global configuration of the installer. Configuration values:
 
@@ -85,15 +97,16 @@ Please report any build issues, or issues in general about this application to t
 ## Changelog
 
  Version   | Date released  | Changes                                                               
- --------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- 1.1.0.0   | 1/11/2018      | First stable release.
- 1.2.0.0   | 1/12/2018      | Removed licence text as it could easily be added within the map. Changed configuration layout to use JSON. Added command line support. Made all messages editable via project settings file.  
-
+ --------- | -------------- | ----------------------------------------------------------------------------------------------------------
+ 1.1.0.0   | 1/11/2018      | First stable (non-published) release.
+ 1.2.0.0   | 1/12/2018      | <ul><li>Removed licence text system as it can be implemented within the map.</li><li>Changed configuration to JSON syntaxing.</li><li>Made two wepage definitions, one for install and one for uninstall.</li><li>Fixed read-key continuing application instead of exiting.</li><li>Fixed file overwritting exception but moving the temporary folder to the executing directory of the installer.</li><li>Made the wrapper shell delete the temp directory.</li><li>Moved all command-line message strings to project settings for easy translations.</li><li>Removed other .bat files implace for internal pre/post-build events.</li></ul>
 ---
 
 ## Author & Legal Stuff
 
 MapZip Installer created by Jacob Jewett ([website][4], [twitter][5]).
+
+THIS SOFTWARE IS DISTRIBUTED "AS IS" UNDER NO FORM OF WARENTY OR LIABILITY TO THE ORIGINAL AUTHOR.
 
 This application and the author are NOT in any way affiliated with MOJANG AB. and their associates.
 
