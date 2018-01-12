@@ -82,15 +82,15 @@ Please report any build issues, or issues in general about this application to t
 
 ---
 
-# Goals
+# [Goals](https://github.com/InstanceGaming/Mapzip/projects/1)
 
 - [x] Make the installer completely functional.
-- [x] Make the solution easy to use for unexperienced users.
+- [x] Make the solution easy to use for inexperienced users.
 - [x] Make the installer one file.
 - [x] Add command line support.
 - [x] Make the command line messages easily translatable.
-- [ ] Add uninstaller .exe to the profile path.
-- [ ] Add log file capibilities.
+- [ ] Add uninstaller to the installed profile path.
+- [ ] Add log file capabilities.
 
 ---
 
