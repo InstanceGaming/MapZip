@@ -36,12 +36,14 @@ Last updated January 12th, 2018 - Current application version **1.2.0.1**
 ---
 
 # Installer data
+The data files, by default, are template examples. Please view these for refrence.
+
 * **config.txt** - Global configuration of the installer. Configuration values:
 
      Name                      | Description                                                           | Value Type
      ------------------------- | --------------------------------------------------------------------- | -----------
      `version`                 | You can ignore this. Simply version management.                       | String
-     `authors`                 | The names of the creators of the map, comma separated.                | Array
+     `authors`                 | The names of the creators of the map.                                 | Array
      `friendlyName`            | The pretty, formatted name of the map and profile.                    | String
      `gameVersion`             | What version of the game you want to be used for the map.             | String
      `mapVersion`              | Add your own version control for your map.                            | String
