@@ -98,11 +98,11 @@ Please report any build issues, or issues in general about this application to t
 
 ## Changelog
 
- Version   | Date released   | Rev. Compatibility  | Changes                                                               
- --------- | --------------- | ------------------- | ----------------------------------------------------------------------------------
- 1.1.0.0   | 1/11/2018       | N/A                 | First stable (non-published) release.                     																																																																																																																																																				
- 1.2.0.0   | 1/12/2018 (1AM) | No                  | <ul><li>Removed licence text system as it can be implemented within the map.</li><li>Changed configuration to JSON syntaxing.</li><li>Made two wepage definitions, one for install and one for uninstall.</li><li>Fixed read-key continuing application instead of exiting.</li><li>Fixed file overwritting exception but moving the temporary folder to the executing directory of the installer.</li><li>Made the wrapper shell delete the temp directory.</li><li>Moved all command-line message strings to project settings for easy translations.</li><li>Removed other `.bat` files implace for internal pre/post-build events.</li></ul>                         
- 1.2.0.1   | 1/12/2018 (9AM) | Yes                 | <ul><li>Added error catch to wrapper if executable not found.</li><li>Added error catch if configuration file is missing.</li><li>Reformatted argument error message.</li></ul> 																																																																																																																						
+ Version                | Date released   | Rev. Compatibility  | Changes                                                               
+ -----------------      | --------------- | ------------------- | ----------------------------------------------------------------------------------
+ 1.1.0.0 ([Archive][6]) | 1/11/2018       | N/A                 | First stable (non-published) release.                     																																																																																																																																																				
+ 1.2.0.0 (N/A)          | 1/12/2018 (1AM) | No                  | <ul><li>Removed licence text system as it can be implemented within the map.</li><li>Changed configuration to JSON syntaxing.</li><li>Made two wepage definitions, one for install and one for uninstall.</li><li>Fixed read-key continuing application instead of exiting.</li><li>Fixed file overwritting exception but moving the temporary folder to the executing directory of the installer.</li><li>Made the wrapper shell delete the temp directory.</li><li>Moved all command-line message strings to project settings for easy translations.</li><li>Removed other `.bat` files implace for internal pre/post-build events.</li></ul>                         
+ 1.2.0.1 ([Archive][7]) | 1/12/2018 (9AM) | Yes                 | <ul><li>Added error catch to wrapper if executable not found.</li><li>Added error catch if configuration file is missing.</li><li>Reformatted argument error message.</li></ul> 																																																																																																																						
  
  ---
 
@@ -119,3 +119,5 @@ This application and the author are NOT in any way affiliated with MOJANG AB. an
 [3]: https://minecraft.net
 [4]: http://instancegaming.net
 [5]: http://twitter.com/Blackhawk341
+[6]: https://drive.google.com/open?id=1MzR9KXm4Wova7dOn0Hije_GrPPEM4mKn
+[7]: https://drive.google.com/open?id=1VGJfrf-cV6-fgmwFEX-5Bz59HMgfUsZh
