@@ -58,21 +58,21 @@ Last updated January 12th, 2018 - Current application version **1.2.0.1**
 # Use Instructions
 
 ### Quick & Simple
-1. Navigate to the Data\ directory of the solution.
+1. Navigate to the `Data\` directory of the solution.
 2. Create or edit the existing data files as described above.
 3. Double-click the batch file named "BUILD.bat"
-4. Your new installer will be in the Output\ folder.
+4. Your new installer will be in the `Output\` folder.
 
 ### Advanced
 
-1. Navigate to the Data\ directory of the solution.
+1. Navigate to the `Data\` directory of the solution.
 2. Create or edit the existing data files as described above.
-3. Double-click the Visual Studio .sln solution file and open it.
+3. Double-click the Visual Studio `.sln` solution file and open it.
 4. If you want to edit the application, the solution is laid out like so:
    * **mzinstaller** - the installer that parses the data and extracts the map to the game directory.
    * **mzwrapper** - the wrapping executable that contains the installer allowing for a one-executable installer file. Please note, the solution is setup to automatically wrap the installer when you build the solution, so you don't have to worry about it.
 5. Once any changes have been made, you can build the entire solution.
-6. Your new installer will be in the Output\ folder.
+6. Your new installer will be in the `Output\` folder.
 
 ---
 
@@ -97,10 +97,10 @@ Please report any build issues, or issues in general about this application to t
 ## Changelog
 
  Version   | Date released   | Changes                                                               
- --------- | --------------- | ----------------------------------------------------------------------------------------------------------
+ --------- | --------------- | ------------------------------------------------------------------------------ | Rev. Compatibility
  1.1.0.0   | 1/11/2018       | First stable (non-published) release.
- 1.2.0.0   | 1/12/2018 (1AM) | <ul><li>Removed licence text system as it can be implemented within the map.</li><li>Changed configuration to JSON syntaxing.</li><li>Made two wepage definitions, one for install and one for uninstall.</li><li>Fixed read-key continuing application instead of exiting.</li><li>Fixed file overwritting exception but moving the temporary folder to the executing directory of the installer.</li><li>Made the wrapper shell delete the temp directory.</li><li>Moved all command-line message strings to project settings for easy translations.</li><li>Removed other .bat files implace for internal pre/post-build events.</li></ul>
- 1.2.0.1   | 1/12/2018 (9AM) | <ul><li>Added error catch to wrapper if executable not found.</li><li>Added error catch if configuration file is missing.</li><li>Reformatted argument error message.</li></ul>
+ 1.2.0.0   | 1/12/2018 (1AM) | <ul><li>Removed licence text system as it can be implemented within the map.</li><li>Changed configuration to JSON syntaxing.</li><li>Made two wepage definitions, one for install and one for uninstall.</li><li>Fixed read-key continuing application instead of exiting.</li><li>Fixed file overwritting exception but moving the temporary folder to the executing directory of the installer.</li><li>Made the wrapper shell delete the temp directory.</li><li>Moved all command-line message strings to project settings for easy translations.</li><li>Removed other `.bat` files implace for internal pre/post-build events.</li></ul> | No
+ 1.2.0.1   | 1/12/2018 (9AM) | <ul><li>Added error catch to wrapper if executable not found.</li><li>Added error catch if configuration file is missing.</li><li>Reformatted argument error message.</li></ul> | Yes
  
  ---
 
