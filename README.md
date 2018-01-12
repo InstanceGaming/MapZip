@@ -23,6 +23,18 @@ Last updated January 12th, 2018 - Current application version **1.2.0.0**
 
 ---
 
+# Command-line arguments
+ 
+ Argument          | Description                                                       | Value type 
+ ----------------- | ----------------------------------------------------------------- | ----------
+ [-c, --config]    | Define a custom config file path.                                 | String, Path
+ [-d, --data]      | Define a custom path to the profile data file.                    | String, Path
+ [-s. --silent]    | Bypass confirmation message. **Not implemented completly**        | N/A
+ [-u, --uninstall] | Uninstall the associated world from the game. **Not implemented** | N/A
+ [-h, --help]      | Help message.                                                     | N/A
+
+---
+
 # Installer data
 * **config.txt** - Global configuration of the installer. Configuration values:
 
@@ -86,7 +98,7 @@ Please report any build issues, or issues in general about this application to t
 
  Version   | Date released  | Changes                                                               
  --------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- 1.1.0.0   | 1/11/2018      | First stable release.
+ 1.1.0.0   | 1/11/2018      | First stable (non-published) release.
  1.2.0.0   | 1/12/2018      | Removed licence text as it could easily be added within the map. Changed configuration layout to use JSON. Added command line support. Made all messages editable via project settings file.  
 
 ---
@@ -94,6 +106,8 @@ Please report any build issues, or issues in general about this application to t
 ## Author & Legal Stuff
 
 MapZip Installer created by Jacob Jewett ([website][4], [twitter][5]).
+
+THIS SOFTWARE IS DISTRIBUTED "AS IS" UNDER NO FORM OF WARENTY OR LIABILITY TO THE ORIGINAL AUTHOR.
 
 This application and the author are NOT in any way affiliated with MOJANG AB. and their associates.
 
