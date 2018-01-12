@@ -55,6 +55,13 @@ namespace mapzip
             string configPath = IO.Combine(IO.ExecutingDir, configName);
             string res_config = IO.ReadTextFile(configPath) ?? "";
 
+            //ensure config file exists
+            if (!IO.Exists(configPath))
+            {
+                Logger.Out(Properties.Settings.Default.Text_ErrConfigMissing, 0, Utils.TextTags[0], Utils.TextTags[1], Utils.TextTags[2]);
+                CloseFormal(0);
+            }
+
             //starting text comments
             Console.Title = Properties.Settings.Default.ProductFriendlyName + " v" + Utils.ProductVersion;
 
@@ -98,7 +105,7 @@ namespace mapzip
                 //ensure profile.zip exists
                 if (!IO.Exists(res_profile))
                 {
-                    Logger.Out(Properties.Settings.Default.Text_ErrProfileZipNotFound, 0, Utils.TextTags[0], Utils.TextTags[4]);
+                    Logger.Out(Properties.Settings.Default.Text_ErrProfileMissing, 0, Utils.TextTags[0], Utils.TextTags[4]);
                     CloseFormal(0);
                 }
 

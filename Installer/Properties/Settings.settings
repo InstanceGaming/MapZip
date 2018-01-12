@@ -41,8 +41,8 @@
     <Setting Name="Text_Separator" Type="System.String" Scope="Application">
       <Value Profile="(Default)">------------------------------------------------------------</Value>
     </Setting>
-    <Setting Name="Text_ErrProfileZipNotFound" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">The profile data zip was not found. Please report this to the mapmaker.</Value>
+    <Setting Name="Text_ErrProfileMissing" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">The profile zip was not found. Please report this to the mapmaker.</Value>
     </Setting>
     <Setting Name="Text_ErrArgumentErrors" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Argument parsing failed, errors returned. Raw message:</Value>
@@ -52,6 +52,9 @@
     </Setting>
     <Setting Name="Text_ArgumentsHelpText" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Usage:@[--help]: Displays this help text.@[-c,--config]: Specify a custom config file path.@[-d,--data]: Specify a custom profile data path.@[-s,--silent]: Dont print console messages and bypass confirmation.@[-u,--uninstall]: Uninstall the map this installer unpacks.</Value>
+    </Setting>
+    <Setting Name="Text_ErrConfigMissing" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">The configuration file could not be located at {0}. Please report this to the mapmaker.</Value>
     </Setting>
   </Settings>
 </SettingsFile>

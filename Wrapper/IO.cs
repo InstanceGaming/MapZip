@@ -15,6 +15,17 @@ namespace mapzip
         {
             Directory.CreateDirectory(Path.Combine(path, name));
         }
+
+        /// <summary>
+        /// Make a directory a hidden folder.
+        /// </summary>
+        /// <param name="folder">the folder to hide</param>
+        public static void MakeFolderHidden(string folder)
+        {
+            DirectoryInfo di = Directory.CreateDirectory(folder);
+            di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
+        }
+
         /// <summary>
         /// Create a folder
         /// </summary>
@@ -23,6 +34,7 @@ namespace mapzip
         {
             Directory.CreateDirectory(path);
         }
+
         /// <summary>
         /// Delete a folder.
         /// </summary>
@@ -31,6 +43,7 @@ namespace mapzip
         {
             Directory.Delete(path, true);
         }
+
         /// <summary>
         /// Check existance at path
         /// </summary>
@@ -51,6 +64,7 @@ namespace mapzip
                 return false;
             }
         }
+
         /// <summary>
         /// Combine to paths.
         /// </summary>
@@ -61,6 +75,7 @@ namespace mapzip
         {
             return Path.Combine(first, second);
         }
+
         /// <summary>
         /// Take zipped file and return extracted file.
         /// </summary>
@@ -70,6 +85,7 @@ namespace mapzip
         {
             ZipFile.ExtractToDirectory(start, end);
         }
+
         /// <summary>
         /// Copy the directory
         /// </summary>
@@ -82,6 +98,7 @@ namespace mapzip
 
             CopyDirectoryRecurssive(diSource, diTarget);
         }
+
         /// <summary>
         /// Recurssivly copy subdirectories and files of directory
         /// </summary>
@@ -103,6 +120,7 @@ namespace mapzip
                 CopyDirectoryRecurssive(diSourceSubDir, nextTargetSubDir);
             }
         }
+
         /// <summary>
         /// Make a copy of a file.
         /// </summary>
@@ -112,6 +130,7 @@ namespace mapzip
         {
             File.Copy(start, end, true);
         }
+
         /// <summary>
         /// Reat UTF-8 encoded text file
         /// </summary>
@@ -121,6 +140,7 @@ namespace mapzip
         {
             return File.ReadAllText(path);
         }
+
         /// <summary>
         /// Write UTF-8 encoded text into a file
         /// </summary>
@@ -130,6 +150,7 @@ namespace mapzip
         {
             File.WriteAllText(path,text);
         }
+
         /// <summary>
         /// Create blank file.
         /// </summary>
@@ -138,6 +159,7 @@ namespace mapzip
         {
             File.Create(path);
         }
+
         /// <summary>
         /// Add things to a file, text or bytes.
         /// </summary>

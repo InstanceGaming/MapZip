@@ -93,6 +93,7 @@ namespace mapzip
 
             if (errors != null)
             {
+                Logger.Out(Environment.NewLine + "Argument parser outputed the following message(s):" + Environment.NewLine,1);
                 Logger.Out(errors,1);
             }
         }

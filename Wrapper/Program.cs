@@ -15,18 +15,22 @@ namespace mapzip
             {
                 installerArgs += " " + arg;
             }
-            if (!IO.Exists(tempFolder))
-            {
-                IO.CreateFolder(tempFolder);
-            }
+            IO.CreateFolder(tempFolder);
+            IO.MakeFolderHidden(tempFolder);
             File.SetAttributes(tempFolder, FileAttributes.Normal);
             FileStream stream = IO.WriteFile(IO.Combine(tempFolder,"~installer.bin"));
             stream.Write(Properties.Resources.mzinstaller, 0, Properties.Resources.mzinstaller.Length);
             stream.Close();
             IO.UnzipFile(IO.Combine(tempFolder, "~installer.bin"), tempFolder);
 
-            Process instprc = Process.Start(IO.Combine(tempFolder, "mzinstaller.exe"), installerArgs);
-            instprc.WaitForExit();
+            try
+            {
+                Process instprc = Process.Start(IO.Combine(tempFolder, "mzinstaller.exe"), installerArgs);
+                instprc.WaitForExit();
+            }
+            catch (Exception e) {
+                Console.WriteLine("Error: Unpacked installer executable was not found. Raw message: " + e.Message);
+            }
 
             IO.RemoveFolder(tempFolder);
         }

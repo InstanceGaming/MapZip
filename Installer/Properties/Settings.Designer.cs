@@ -144,10 +144,10 @@ namespace mapzip.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("The profile data zip was not found. Please report this to the mapmaker.")]
-        public string Text_ErrProfileZipNotFound {
+        [global::System.Configuration.DefaultSettingValueAttribute("The profile zip was not found. Please report this to the mapmaker.")]
+        public string Text_ErrProfileMissing {
             get {
-                return ((string)(this["Text_ErrProfileZipNotFound"]));
+                return ((string)(this["Text_ErrProfileMissing"]));
             }
         }
         
@@ -175,6 +175,16 @@ namespace mapzip.Properties {
         public string Text_ArgumentsHelpText {
             get {
                 return ((string)(this["Text_ArgumentsHelpText"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("The configuration file could not be located at {0}. Please report this to the map" +
+            "maker.")]
+        public string Text_ErrConfigMissing {
+            get {
+                return ((string)(this["Text_ErrConfigMissing"]));
             }
         }
     }
