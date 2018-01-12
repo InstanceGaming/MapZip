@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mzinstaller", "Installer\mzinstaller.csproj", "{59911726-99F8-462B-A1B1-FB83A79F72AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mzwrapper", "Wrapper\mzwrapper.csproj", "{B19A2D26-9BE2-4D1F-8427-3490C2BE3389}"
+	ProjectSection(ProjectDependencies) = postProject
+		{59911726-99F8-462B-A1B1-FB83A79F72AB} = {59911726-99F8-462B-A1B1-FB83A79F72AB}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59911726-99F8-462B-A1B1-FB83A79F72AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59911726-99F8-462B-A1B1-FB83A79F72AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59911726-99F8-462B-A1B1-FB83A79F72AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59911726-99F8-462B-A1B1-FB83A79F72AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B19A2D26-9BE2-4D1F-8427-3490C2BE3389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B19A2D26-9BE2-4D1F-8427-3490C2BE3389}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B19A2D26-9BE2-4D1F-8427-3490C2BE3389}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B19A2D26-9BE2-4D1F-8427-3490C2BE3389}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
