@@ -75,6 +75,8 @@ The data files, by default, are template examples. Please view these for refrenc
    * **mzwrapper** - the wrapping executable that contains the installer allowing for a one-executable installer file. Please note, the solution is setup to automatically wrap the installer when you build the solution, so you don't have to worry about it.
 5. Once any changes have been made, you can build the entire solution.
 6. Your new installer will be in the `Output\` folder.
+ 
+ \*Note: If required NuGet packages are not found when building the solution, consider running "nugetrestore.bat" and build again.
 
 ---
 
