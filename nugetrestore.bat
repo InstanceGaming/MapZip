@@ -1,7 +1,6 @@
 @echo off
 SET packagePath=%~dp0Installer\packages\Newtonsoft.Json.10.0.3\
 SET webAddress=http://packages.nuget.org/api/v1/package/Newtonsoft.Json/
-C:
 echo Getting NuGet package(s) from remote.
 mkdir %packagePath%
 powershell -Command "(New-Object Net.WebClient).DownloadFile('%webAddress%', '%~dp0package.zip')"
