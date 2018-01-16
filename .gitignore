@@ -1,5 +1,6 @@
 RESET.bat
 Output/
+Archives/
 packages*/
 Installer/bin
 Installer/obj
