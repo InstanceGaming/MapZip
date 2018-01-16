@@ -73,18 +73,18 @@
     <PostBuildEvent>if "$(ConfigurationName)" == "Debug" ( exit 0 ) else ( goto :finalize )
 
 :finalize
-del $(TargetDir)*.config 
-del $(TargetDir)*.pdb
-rd /s /q $(SolutionDir)Output\
-mkdir $(SolutionDir)Output\
-copy /y $(TargetDir) $(SolutionDir)Output
+del "$(TargetDir)*.config"
+del "$(TargetDir)*.pdb"
+rd /s /q "$(SolutionDir)Output\"
+mkdir "$(SolutionDir)Output\"
+copy /y "$(TargetDir)" "$(SolutionDir)Output"
 exit 0</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>del $(TargetDir)*.config 
-del $(TargetDir)*.pdb
-cd  $(SolutionDir)dist\7z
-7za.exe a $(ProjectDir)Resources\mzinstaller.zip $(SolutionDir)Installer\bin\Release\*
+    <PreBuildEvent>del "$(TargetDir)*.config"
+del "$(TargetDir)*.pdb"
+cd  "$(SolutionDir)dist\7z"
+7za.exe a "$(ProjectDir)Resources\mzinstaller.zip" "$(SolutionDir)Installer\bin\Release\*"
 exit 0</PreBuildEvent>
   </PropertyGroup>
 </Project>

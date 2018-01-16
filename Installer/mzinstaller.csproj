@@ -106,8 +106,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>del $(TargetDir)
-copy /y $(SolutionDir)Data $(TargetDir)
+    <PreBuildEvent>del "$(TargetDir)"
+copy /y "$(SolutionDir)Data" "$(TargetDir)"
 exit 0</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
