@@ -2,7 +2,7 @@
 
 Simplistic command-line map installer for Java Minecraft map-makers.
 
-Last updated January 12th, 2018 - Current application version **1.2.0.1**
+Last updated January 12th, 2018 - Current application version **1.2.0.2**
 
 ---
 
@@ -103,6 +103,7 @@ Please report any build issues, or issues in general about this application to t
  1.1.0.0 ([Ext. Archive][6]) | N/A             | N/A                 | First stable (non-published) release.						
  1.2.0.0 (N/A)               | N/A             | No                  | <ul><li>Removed licence text system as it can be implemented within the map.</li><li>Changed configuration to JSON syntaxing.</li><li>Made two webpage definitions, one for install and one for uninstall.</li><li>Fixed read-key continuing application instead of exiting.</li><li>Fixed file overwriting exception by moving the temporary folder to the executing directory of the installer.</li><li>Made the wrapper shell delete the temp directory.</li><li>Moved all command-line message strings to project settings for easy translations.</li><li>Removed other `.bat` files implace for internal pre/post-build events.</li></ul>                         
  1.2.0.1 ([Ext. Archive][7]) | 1/12/2018       | Yes                 | <ul><li>Added error catch to wrapper if executable not found.</li><li>Added error catch if configuration file is missing.</li><li>Reformatted argument error message.</li></ul> 																																																																																																																						
+ 1.2.0.2 ([Ext. Archive][8]) | 1/16/2018       | Yes                 | <ul><li>Cleaned up unused methods in wrapper.</li><li>Made temp folder hidden.</li><li>Added a touch of coloring to the installer command line.</li></ul>
  
  ---
 
@@ -121,3 +122,4 @@ This application and the author are NOT in any way affiliated with MOJANG AB. an
 [5]: http://twitter.com/Blackhawk341
 [6]: https://drive.google.com/open?id=1MzR9KXm4Wova7dOn0Hije_GrPPEM4mKn
 [7]: https://drive.google.com/open?id=1VGJfrf-cV6-fgmwFEX-5Bz59HMgfUsZh
+[8]: https://drive.google.com/open?id=1UZ7QessRl7pvLJEyHoBTG-xLoIzN_utB

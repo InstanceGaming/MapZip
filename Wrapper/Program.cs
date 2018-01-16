@@ -15,14 +15,12 @@ namespace mapzip
             {
                 installerArgs += " " + arg;
             }
-            IO.CreateFolder(tempFolder);
-            IO.MakeFolderHidden(tempFolder);
-            File.SetAttributes(tempFolder, FileAttributes.Normal);
+            DirectoryInfo tempinfo = IO.CreateFolder(tempFolder);
+            IO.MakeFolderHidden(tempinfo);
             FileStream stream = IO.WriteFile(IO.Combine(tempFolder,"~installer.bin"));
             stream.Write(Properties.Resources.mzinstaller, 0, Properties.Resources.mzinstaller.Length);
             stream.Close();
             IO.UnzipFile(IO.Combine(tempFolder, "~installer.bin"), tempFolder);
-
             try
             {
                 Process instprc = Process.Start(IO.Combine(tempFolder, "mzinstaller.exe"), installerArgs);

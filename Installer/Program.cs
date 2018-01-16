@@ -58,7 +58,7 @@ namespace mapzip
             //ensure config file exists
             if (!IO.Exists(configPath))
             {
-                Logger.Out(Properties.Settings.Default.Text_ErrConfigMissing, 0, Utils.TextTags[0], Utils.TextTags[1], Utils.TextTags[2]);
+                Logger.Out(String.Format(Properties.Settings.Default.Text_ErrConfigMissing,configPath), 0, Utils.TextTags[0], Utils.TextTags[1], Utils.TextTags[2]);
                 CloseFormal(0);
             }
 
@@ -66,8 +66,10 @@ namespace mapzip
             Console.Title = Properties.Settings.Default.ProductFriendlyName + " v" + Utils.ProductVersion;
 
             Logger.Out(Properties.Settings.Default.Text_Separator, 0);
+            Console.ForegroundColor = ConsoleColor.White;
             Logger.Out(String.Format(Properties.Settings.Default.Text_Welcome, Properties.Settings.Default.ProductFriendlyName, Utils.ProductVersion), 0);
             Logger.Out(Properties.Settings.Default.Text_Licence, 0);
+            Console.ForegroundColor = ConsoleColor.Gray;
             Logger.Out(Properties.Settings.Default.Text_Separator, 0);
             Logger.Out(Properties.Settings.Default.Text_ReadingConfig, 0, Utils.TextTags[0]);
 
@@ -110,8 +112,13 @@ namespace mapzip
                 }
 
                 //confim installation
+                Logger.Out(Properties.Settings.Default.Text_Separator, 1);
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Logger.Out(String.Format(Properties.Settings.Default.Text_InstallConfirmation, cfg.Config.friendlyName, Utils.StringArrayToFormatted(cfg.Config.authors), cfg.Config.mapVersion), 1);
+                Console.ForegroundColor = ConsoleColor.White;
                 Logger.Out(Properties.Settings.Default.Text_InstallNoticeGameSave, 1);
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Logger.Out(Properties.Settings.Default.Text_Separator, 1);
 
                 if (Utils.LoopingReadKeyConfirm(silent) == true)
                 {
