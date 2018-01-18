@@ -111,5 +111,15 @@ namespace mapzip
                 return false;
             }
         }
+
+        public static string GetSchemaValue(string name)
+        {
+            if (!JsonSchema.Schema.TryGetValue(name, out string value))
+            {
+                Logger.Out(String.Format(Properties.Settings.Default.Text_ErrSchemaNameMissing, name), 0, TextTags[1]);
+                Program.CloseFormal(-1);
+            }
+            return value;
+        }
     }
 }

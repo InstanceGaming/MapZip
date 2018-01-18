@@ -171,7 +171,10 @@ namespace mapzip.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"Usage:@[--help]: Displays this help text.@[-c,--config]: Specify a custom config file path.@[-d,--data]: Specify a custom profile data path.@[-s,--silent]: Dont print console messages and bypass confirmation.@[-u,--uninstall]: Uninstall the map this installer unpacks.")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Usage:@[--help]: Displays this help text.@[-c,--config]: Specify a custom config " +
+            "file path.@[-d,--data]: Specify a custom profile data path.@[-s,--silent]: Bypas" +
+            "s confirmation message.@[-u,--uninstall]: Uninstall the map this installer unpac" +
+            "ks.")]
         public string Text_ArgumentsHelpText {
             get {
                 return ((string)(this["Text_ArgumentsHelpText"]));
@@ -185,6 +188,137 @@ namespace mapzip.Properties {
         public string Text_ErrConfigMissing {
             get {
                 return ((string)(this["Text_ErrConfigMissing"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Beggining install proccess. ")]
+        public string Text_InstBegin {
+            get {
+                return ((string)(this["Text_InstBegin"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Verifying game directory...")]
+        public string Text_InstVerifyGameDir {
+            get {
+                return ((string)(this["Text_InstVerifyGameDir"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Game directory missing. Please try running the Minecraft launcher once before usi" +
+            "ng this installer.")]
+        public string Text_InstGameDirMissing {
+            get {
+                return ((string)(this["Text_InstGameDirMissing"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Exising installation of map found. Removing and reinstalling.")]
+        public string Text_InstExistingFound {
+            get {
+                return ((string)(this["Text_InstExistingFound"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Existing manifest not found. Creating.")]
+        public string Text_InstManifestMissing {
+            get {
+                return ((string)(this["Text_InstManifestMissing"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Updating manifest with new map info.")]
+        public string Text_InstUpdatingManifest {
+            get {
+                return ((string)(this["Text_InstUpdatingManifest"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Adding new profile to launcher.")]
+        public string Text_InstUpdatingProfiles {
+            get {
+                return ((string)(this["Text_InstUpdatingProfiles"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Creating map profile.")]
+        public string Text_InstCreatingProfile {
+            get {
+                return ((string)(this["Text_InstCreatingProfile"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Unzipping internal profile copy.")]
+        public string Text_InstUnzippingProfile {
+            get {
+                return ((string)(this["Text_InstUnzippingProfile"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Setting default user options from existing since once was not provided.")]
+        public string Text_InstSettingDefaults {
+            get {
+                return ((string)(this["Text_InstSettingDefaults"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Installation completed.")]
+        public string Text_InstCompleted {
+            get {
+                return ((string)(this["Text_InstCompleted"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Copying internal profile to new profile in game directory.")]
+        public string Text_InstCopying {
+            get {
+                return ((string)(this["Text_InstCopying"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Config file was empty. Please report this to the mapmaker.")]
+        public string Text_ConfEmpty {
+            get {
+                return ((string)(this["Text_ConfEmpty"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Could not find schema name \"{0}\" in dictionary. Please report this to the mapmake" +
+            "r and developer.")]
+        public string Text_ErrSchemaNameMissing {
+            get {
+                return ((string)(this["Text_ErrSchemaNameMissing"]));
+            }
+            set {
+                this["Text_ErrSchemaNameMissing"] = value;
             }
         }
     }

@@ -18,7 +18,7 @@ namespace mapzip
         {
             if (String.IsNullOrWhiteSpace(m_RawText))
             {
-                throw new Exception("Configuration file was blank.");
+                Logger.Out(Properties.Settings.Default.Text_ConfEmpty,0,Utils.TextTags[1]);
             }
             m_Structure = JsonInterface.DeserializeToStructure<ConfigStructure>(m_RawText);
         }

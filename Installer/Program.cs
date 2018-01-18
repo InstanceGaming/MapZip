@@ -21,15 +21,15 @@ namespace mapzip
             string customDataPath = null;
 
             OptionSet argSet = new OptionSet() {
-                { "c|config=", "Specify custom configuration file path.",
+                { "c|config=", "",
                     (string v) => customConfigPath = v },
-                { "d|data=", "Specify custom profile data file path.",
+                { "d|data=", "",
                     (string v) => customDataPath = v },
-                { "s|silent", "the number of times to repeat the greeting.",
+                { "s|silent", "",
                     v => silent = true},
-                { "u|uninstall", "Uninstall the map this installer unpacks.",
+                { "u|uninstall", "",
                     v => uninstallMode = true},
-                { "h|help",  "Show argument usage and information.",
+                { "h|help", "",
                     v => showHelp = true},
             };
 
@@ -148,10 +148,12 @@ namespace mapzip
             }
         }
 
-        private static void CloseFormal(int code)
+        public static void CloseFormal(int code)
         {
             //thanks message
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Logger.Out(String.Format(Environment.NewLine + Properties.Settings.Default.Text_Thanks, Properties.Settings.Default.ProductFriendlyName, Utils.ProductVersion), 1);
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.ReadKey();
             Environment.Exit(code);
         }

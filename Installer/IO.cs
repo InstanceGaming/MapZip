@@ -106,11 +106,11 @@ namespace mapzip
             }
             catch (IOException e)
             {
-                Logger.Out("Zipping File; " + e.Message, 0, "ERROR", "IO");
+                Logger.Out("Unzipping file; " + e.Message, 0, "ERROR", "IO");
             }
             catch (UnauthorizedAccessException e)
             {
-                Logger.Out("Zipping File; " + e.Message, 0, "ERROR", "IO", "AUTHORIZATION");
+                Logger.Out("Unzipping file; " + e.Message, 0, "ERROR", "IO", "AUTHORIZATION");
             }
         }
 

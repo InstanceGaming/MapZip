@@ -51,10 +51,52 @@
       <Value Profile="(Default)">This feature is not implemented yet.</Value>
     </Setting>
     <Setting Name="Text_ArgumentsHelpText" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Usage:@[--help]: Displays this help text.@[-c,--config]: Specify a custom config file path.@[-d,--data]: Specify a custom profile data path.@[-s,--silent]: Dont print console messages and bypass confirmation.@[-u,--uninstall]: Uninstall the map this installer unpacks.</Value>
+      <Value Profile="(Default)">Usage:@[--help]: Displays this help text.@[-c,--config]: Specify a custom config file path.@[-d,--data]: Specify a custom profile data path.@[-s,--silent]: Bypass confirmation message.@[-u,--uninstall]: Uninstall the map this installer unpacks.</Value>
     </Setting>
     <Setting Name="Text_ErrConfigMissing" Type="System.String" Scope="Application">
       <Value Profile="(Default)">The configuration file could not be located at {0}. Please report this to the mapmaker.</Value>
+    </Setting>
+    <Setting Name="Text_InstBegin" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Beggining install proccess. </Value>
+    </Setting>
+    <Setting Name="Text_InstVerifyGameDir" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Verifying game directory...</Value>
+    </Setting>
+    <Setting Name="Text_InstGameDirMissing" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Game directory missing. Please try running the Minecraft launcher once before using this installer.</Value>
+    </Setting>
+    <Setting Name="Text_InstExistingFound" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Exising installation of map found. Removing and reinstalling.</Value>
+    </Setting>
+    <Setting Name="Text_InstManifestMissing" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Existing manifest not found. Creating.</Value>
+    </Setting>
+    <Setting Name="Text_InstUpdatingManifest" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Updating manifest with new map info.</Value>
+    </Setting>
+    <Setting Name="Text_InstUpdatingProfiles" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Adding new profile to launcher.</Value>
+    </Setting>
+    <Setting Name="Text_InstCreatingProfile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Creating map profile.</Value>
+    </Setting>
+    <Setting Name="Text_InstUnzippingProfile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Unzipping internal profile copy.</Value>
+    </Setting>
+    <Setting Name="Text_InstSettingDefaults" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Setting default user options from existing since once was not provided.</Value>
+    </Setting>
+    <Setting Name="Text_InstCompleted" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Installation completed.</Value>
+    </Setting>
+    <Setting Name="Text_InstCopying" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Copying internal profile to new profile in game directory.</Value>
+    </Setting>
+    <Setting Name="Text_ConfEmpty" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Config file was empty. Please report this to the mapmaker.</Value>
+    </Setting>
+    <Setting Name="Text_ErrSchemaNameMissing" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Could not find schema name "{0}" in dictionary. Please report this to the mapmaker and developer.</Value>
     </Setting>
   </Settings>
 </SettingsFile>
