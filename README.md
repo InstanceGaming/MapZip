@@ -78,11 +78,11 @@ The data files, by default, are template examples. Please view these for refrenc
      `friendlyName`            | The pretty, formatted name of the map and profile.                    | String
      `gameVersion`             | What version of the game you want to be used for the map.             | String
      `mapVersion`              | Add your own version control for your map.                            | String
-     `name`                    | The internal name of the map, no spaces or special characters.        | String
+     `internalName`            | The internal name of the map, no spaces or special characters.        | String
      `profileIcon`             | The icon of the game. To view possible values, use the launcher.      | String
      `showWebpages`            | If true, the installer will open the webpage specified after install. | Boolean
      `webpageInstalled`        | The webpage to open upon installation.                                | String
-	 `webpageUninstalled`      | The webpage to open upon uninstallation.                              | String
+     `webpageUninstalled`      | The webpage to open upon uninstallation.                              | String
 
  * **profile.zip** - You create this part. Within it is the same folder layout as the .minecraft directory, place your maps resources within this zip.
 
