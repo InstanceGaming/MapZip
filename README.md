@@ -1,6 +1,7 @@
 # MapZip Installer
 
 *Simplistic command-line map installer for Java Minecraft map-makers.*
+
 Last updated January 17th, 2018 - Current application version **1.3.0.0**
 
 ---
@@ -16,14 +17,14 @@ Last updated January 17th, 2018 - Current application version **1.3.0.0**
 
 ### Quick & Simple
 1. Navigate to the `Data\` directory of the solution.
-2. Create or edit the existing data files as described above.
-3. Double-click the batch file named "BUILD.bat"
+2. Create or edit the existing data files as described below.
+3. Double-click the batch file named `BUILD.bat`.
 4. Your new installer will be in the `Output\` folder.
 
 ### Advanced
 
 1. Navigate to the `Data\` directory of the solution.
-2. Create or edit the existing data files as described above.
+2. Create or edit the existing data files as described below.
 3. Double-click the Visual Studio `.sln` solution file and open it.
 4. If you want to edit the application, the solution is laid out like so:
    * **mzinstaller** - the installer that parses the data and extracts the map to the game directory.
