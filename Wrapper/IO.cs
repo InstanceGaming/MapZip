@@ -16,6 +16,27 @@ namespace mapzip
         }
 
         /// <summary>
+        /// Check existance at path
+        /// </summary>
+        /// <param name="path">where to look</param>
+        /// <returns>if it exists or not</returns>
+        public static bool Exists(string path)
+        {
+            if (File.Exists(path))
+            {
+                return true;
+            }
+            else if (Directory.Exists(path))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
         /// Make a directory a hidden folder.
         /// </summary>
         /// <param name="folder">the folder to hide</param>

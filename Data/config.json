@@ -1,5 +1,5 @@
 {
-	"version":"1.3.0.0",
+	"layoutVersion": 1,
 	"authors":["Jacob Jewett"],
 	"friendlyName":"Example Map",
 	"gameVersion":"1.12.2",

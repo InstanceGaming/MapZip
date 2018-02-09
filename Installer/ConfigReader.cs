@@ -9,17 +9,20 @@ namespace mapzip
 
         public ConfigStructure Config { get { return m_Structure; } }
 
+        /// <summary>
+        /// Create a new configuration reader
+        /// </summary>
+        /// <param name="raw">the raw file text</param>
         public ConfigReader(string raw)
         {
             m_RawText = raw;
         }
 
+        /// <summary>
+        /// Serialize the configuration into a ConfigStructure object
+        /// </summary>
         public void Parse()
         {
-            if (String.IsNullOrWhiteSpace(m_RawText))
-            {
-                Logger.Out(Properties.Settings.Default.Text_ConfEmpty,0,Utils.TextTags[1]);
-            }
             m_Structure = JsonInterface.DeserializeToStructure<ConfigStructure>(m_RawText);
         }
     }

@@ -2,7 +2,7 @@
 
 *Simplistic command-line map installer for Java Minecraft map-makers.*
 
-Last updated January 17th, 2018 - Current application version **1.3.0.0**
+Last updated Febuary 4th, 2018 - Current application version **1.3.0.1**
 
 ---
 
@@ -26,14 +26,12 @@ Last updated January 17th, 2018 - Current application version **1.3.0.0**
 1. Navigate to the `Data\` directory of the solution.
 2. Create or edit the existing data files as described below.
 3. Double-click the Visual Studio `.sln` solution file and open it.
-4. If you want to edit the application, the solution is laid out like so:
+4. If you want to edit the application, please first run `nugetrestore.bat` to redownload depencencies. The solution is laid out like so:
    * **mzinstaller** - the installer that parses the data and extracts the map to the game directory.
    * **mzwrapper** - the wrapping executable that contains the installer allowing for a one-executable installer file. Please note, the solution is setup to automatically wrap the installer when you build the solution, so you don't have to worry about it.
    * If you want to translate the console messages, open the `Properties` page and click `Settings`.
 5. Once any changes have been made, you can build the entire solution.
 6. Your new installer will be in the `Output\` folder.
- 
- \*Note: If required NuGet packages are not found when building the solution, consider running "nugetrestore.bat" and build again.
 
 ---
 
@@ -56,13 +54,12 @@ Last updated January 17th, 2018 - Current application version **1.3.0.0**
 
 # Command-line arguments
  
- Argument            | Description                                                                 | Value type 
- ------------------- | --------------------------------------------------------------------------- | ----------
- `[-c, --config]`    | Define a custom config file path. (Realative to temp folder)                | String, Path
- `[-d, --data]`      | Define a custom path to the profile data file. (Realative to temp folder)   | String, Path
- `[-s. --silent]`    | Bypass confirmation message. **Partially implemented**                      | N/A
- `[-u, --uninstall]` | Uninstall the associated world from the game. **Not implemented**           | N/A
- `[-h, --help]`      | Argument usage message.                                                     | N/A
+ Argument          | Description                                                                 | Value type 
+ ----------------- | --------------------------------------------------------------------------- | ----------
+ `-d, --debug`     | Shows debug level output                                                    | Bool
+ `-s. --silent`    | Bypass confirmation messages and do not print to console.                   | Bool
+ `-u, --uninstall` | Uninstall the associated world from the game. **Not implemented**           | Bool
+ `-h, --help`      | Argument usage message.                                                     | Bool
 
 ---
 
@@ -73,7 +70,7 @@ The data files, by default, are template examples. Please view these for refrenc
 
      Name                      | Description                                                           | Value Type
      ------------------------- | --------------------------------------------------------------------- | -----------
-     `version`                 | You can ignore this. Simply version management.                       | String
+     `layoutVersion`           | You can ignore this. Simply layout version management.                | Integer
      `authors`                 | The names of the creators of the map.                                 | Array
      `friendlyName`            | The pretty, formatted name of the map and profile.                    | String
      `gameVersion`             | What version of the game you want to be used for the map.             | String
@@ -84,7 +81,7 @@ The data files, by default, are template examples. Please view these for refrenc
      `webpageInstalled`        | The webpage to open upon installation.                                | String
      `webpageUninstalled`      | The webpage to open upon uninstallation.                              | String
 
- * **profile.zip** - You create this part. Within it is the same folder layout as the .minecraft directory, place your maps resources within this zip.
+ * **profile.zip** - *You create this part*. Within it is the same folder layout as the .minecraft directory, place your maps resources within this zip.
 
 ---
 
@@ -101,7 +98,7 @@ Please report any build issues, or issues in general about this application to t
 - [x] Make the installer one file.
 - [x] Add command line support.
 - [x] Make the command line messages easily translatable.
-- [ ] Add uninstaller to the installed profile path. **Soon**!
+- [ ] Add uninstaller to the installed profile path.!
 - [ ] Add log file capabilities.
 
 ---
@@ -115,8 +112,7 @@ Please report any build issues, or issues in general about this application to t
  1.2.0.1                     | 1/12/2018       | <ul><li>Added error catch to wrapper if executable not found.</li><li>Added error catch if configuration file is missing.</li><li>Reformatted argument error message.</li></ul> 																																																																																																																						
  1.2.0.2                     | 1/16/2018       | <ul><li>Cleaned up unused methods in wrapper.</li><li>Made temp folder hidden.</li><li>Added a touch of coloring to the installer command line.</li></ul>
  1.3.0.0                     | 1/17/2018       | <ul><li>Added manifest file in preparation for uninstaller.</li><li>All message strings are translatable via the solutions Settings file.</li><li>Added schema-type structure to the JSON file layouts.</li><li>Fixed some misc. unhandled errors and batch files paths.</li></ul>
- 
- \*Note: Removed reverse compatibility column as I remembered every installer must have a updated configuration to run, thus making it unnessesary; just like the external archive links.
+ 1.3.0.1                     | 2/4/2018        | <ul><li>Fixed manifest and launcher file profile duplication.</li><li>Overhauled JSON serialization proccess.</li><li>Overhauled logging system including new message levels.</li><li>Abstracted argument parser.</li><li>Fixed having more than one wrapper open crashing it.</li></ul>
  
  ---
 

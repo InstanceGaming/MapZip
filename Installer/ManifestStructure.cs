@@ -13,8 +13,7 @@ namespace mapzip
         public string timeCreated { get; set; }
         public string timeLastUsed { get; set; }
         public string installerVersionCreated { get; set; }
-        public Installedmap[] installedMaps { get; set; }
-        public Uninstalledmap[] uninstalledMaps { get; set; }
+        public List<Installedmap> installedMaps { get; set; }
 
         public class Installedmap
         {
@@ -25,15 +24,6 @@ namespace mapzip
             public string mapVersion { get; set; }
             public string installerVersion { get; set; }
             public bool showWebpage { get; set; }
-            public string webpage { get; set; }
-        }
-
-        public class Uninstalledmap
-        {
-            public string timeUninstalled { get; set; }
-            public string friendlyName { get; set; }
-            public string mapVersion { get; set; }
-            public string installerVersion { get; set; }
             public string webpage { get; set; }
         }
     }

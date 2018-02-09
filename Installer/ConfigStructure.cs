@@ -2,7 +2,7 @@
 {
     public class ConfigStructure
     {
-        public string version { get; set; }
+        public int layoutVersion { get; set; }
         public string[] authors { get; set; }
         public string friendlyName { get; set; }
         public string gameVersion { get; set; }

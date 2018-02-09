@@ -68,12 +68,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArgumentParser.cs" />
     <Compile Include="ConfigReader.cs" />
     <Compile Include="ConfigStructure.cs" />
+    <Compile Include="InstallerCompletionStatus.cs" />
+    <Compile Include="LogService.cs" />
     <Compile Include="JsonInterface.cs" />
     <Compile Include="JsonSchema.cs" />
-    <Compile Include="Logger.cs" />
+    <Compile Include="LauncherStructure.cs" />
+    <Compile Include="LoggableAction.cs" />
     <Compile Include="Installer.cs" />
+    <Compile Include="LoggerEventArgs.cs" />
+    <Compile Include="LogPriority.cs" />
+    <Compile Include="LogFlags.cs" />
     <Compile Include="MonoOptions.cs" />
     <Compile Include="ManifestStructure.cs" />
     <Compile Include="Program.cs" />

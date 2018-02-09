@@ -33,11 +33,11 @@ namespace mapzip
             }
             catch (IOException e)
             {
-                Logger.Out("Creating Folder; " + e.Message, 0, "ERROR", "IO");
+                //Logger.Out("Creating Folder; " + e.Message, 0, "ERROR", "IO");
             }
             catch (UnauthorizedAccessException e)
             {
-                Logger.Out("Creating Folder; " + e.Message, 0, "ERROR", "IO", "AUTHORIZATION");
+                //Logger.Out("Creating Folder; " + e.Message, 0, "ERROR", "IO", "AUTHORIZATION");
             }
         }
 
@@ -53,11 +53,11 @@ namespace mapzip
             }
             catch (IOException e)
             {
-                Logger.Out("Removing Folder; " + e.Message, 0, "ERROR", "IO");
+                //Logger.Out("Removing Folder; " + e.Message, 0, "ERROR", "IO");
             }
             catch (UnauthorizedAccessException e)
             {
-                Logger.Out("Removing Folder; " + e.Message, 0, "ERROR", "IO", "AUTHORIZATION");
+                //Logger.Out("Removing Folder; " + e.Message, 0, "ERROR", "IO", "AUTHORIZATION");
             }
         }
 
@@ -106,11 +106,11 @@ namespace mapzip
             }
             catch (IOException e)
             {
-                Logger.Out("Unzipping file; " + e.Message, 0, "ERROR", "IO");
+                //Logger.Out("Unzipping file; " + e.Message, 0, "ERROR", "IO");
             }
             catch (UnauthorizedAccessException e)
             {
-                Logger.Out("Unzipping file; " + e.Message, 0, "ERROR", "IO", "AUTHORIZATION");
+                //Logger.Out("Unzipping file; " + e.Message, 0, "ERROR", "IO", "AUTHORIZATION");
             }
         }
 
@@ -151,11 +151,11 @@ namespace mapzip
             }
             catch (IOException e)
             {
-                Logger.Out("Recrs. Folder Copying; " + e.Message, 0, "ERROR", "IO");
+                //Logger.Out("Recrs. Folder Copying; " + e.Message, 0, "ERROR", "IO");
             }
             catch (UnauthorizedAccessException e)
             {
-                Logger.Out("Recrs. Folder Copying; " + e.Message, 0, "ERROR", "IO", "AUTHORIZATION");
+                //Logger.Out("Recrs. Folder Copying; " + e.Message, 0, "ERROR", "IO", "AUTHORIZATION");
             }
         }
 
@@ -197,11 +197,11 @@ namespace mapzip
             }
             catch (IOException e)
             {
-                Logger.Out("Reading text file; " + e.Message, 0, "ERROR", "IO");
+                //Logger.Out("Reading text file; " + e.Message, 0, "ERROR", "IO");
             }
             catch (UnauthorizedAccessException e)
             {
-                Logger.Out("Reading text file; " + e.Message, 0, "ERROR", "IO", "AUTHORIZATION");
+                //Logger.Out("Reading text file; " + e.Message, 0, "ERROR", "IO", "AUTHORIZATION");
             }
         }
 

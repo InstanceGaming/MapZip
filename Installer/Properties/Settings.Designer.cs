@@ -71,8 +71,8 @@ namespace mapzip.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Config file version mismatch. Application version {0}, config verision {1}. Pleas" +
-            "e report this to the mapmaker.")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Config file layout mismatch. Local layout version 1, config verision {0}. Please " +
+            "report this to the mapmaker.")]
         public string Text_ErrConfigVersionMismatch {
             get {
                 return ((string)(this["Text_ErrConfigVersionMismatch"]));
@@ -90,15 +90,6 @@ namespace mapzip.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Licence Agreement")]
-        public string Text_LicenceAgreementHeader {
-            get {
-                return ((string)(this["Text_LicenceAgreementHeader"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Are you sure you want to install the map \"{0}\" by {1} (v{2})? (Y or N)")]
         public string Text_InstallConfirmation {
             get {
@@ -108,7 +99,7 @@ namespace mapzip.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Tip: Save your game as it will be closed forcibly if not exited now.")]
+        [global::System.Configuration.DefaultSettingValueAttribute("!!! Save your game as it will be closed forcibly if not exited now. !!!")]
         public string Text_InstallNoticeGameSave {
             get {
                 return ((string)(this["Text_InstallNoticeGameSave"]));
@@ -257,7 +248,7 @@ namespace mapzip.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Creating map profile.")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Updating launcher profiles list.")]
         public string Text_InstCreatingProfile {
             get {
                 return ((string)(this["Text_InstCreatingProfile"]));
@@ -309,7 +300,7 @@ namespace mapzip.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Could not find schema name \"{0}\" in dictionary. Please report this to the mapmake" +
             "r and developer.")]
@@ -317,8 +308,54 @@ namespace mapzip.Properties {
             get {
                 return ((string)(this["Text_ErrSchemaNameMissing"]));
             }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Launcher profiles structure version mismatch. Please report this to the mapmaker " +
+            "and developer.")]
+        public string Text_ErrLauncherLayoutMismatch {
+            get {
+                return ((string)(this["Text_ErrLauncherLayoutMismatch"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Found game directory.")]
+        public string Text_InstGameDirFound {
+            get {
+                return ((string)(this["Text_InstGameDirFound"]));
+            }
             set {
-                this["Text_ErrSchemaNameMissing"] = value;
+                this["Text_InstGameDirFound"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("The installer aborted operation unexpectedly. Please report this to the mapmaker " +
+            "including the installer version ({0}), the installer log file or console output," +
+            " the map you are attempting to install ({1}) and your basic system info.")]
+        public string Text_InstAborted {
+            get {
+                return ((string)(this["Text_InstAborted"]));
+            }
+            set {
+                this["Text_InstAborted"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Launcher configuration file was not found. Please attempt to launch the Minecraft" +
+            " launcher first/again before running this installer.")]
+        public string Text_LauncherFileMissing {
+            get {
+                return ((string)(this["Text_LauncherFileMissing"]));
+            }
+            set {
+                this["Text_LauncherFileMissing"] = value;
             }
         }
     }

@@ -1,6 +1,5 @@
 ﻿using Mono.Options;
 using System;
-using System.Collections.Generic;
 using System.Threading;
 
 namespace mapzip
@@ -13,148 +12,161 @@ namespace mapzip
         [STAThread]
         static void Main(string[] args)
         {
-            //parse command line arguments
-            bool showHelp = false;
-            bool uninstallMode = false;
-            bool silent = false;
-            string customConfigPath = null;
-            string customDataPath = null;
+            LoggableAction logger = new LoggableAction();
 
-            OptionSet argSet = new OptionSet() {
-                { "c|config=", "",
-                    (string v) => customConfigPath = v },
-                { "d|data=", "",
-                    (string v) => customDataPath = v },
-                { "s|silent", "",
-                    v => silent = true},
-                { "u|uninstall", "",
-                    v => uninstallMode = true},
-                { "h|help", "",
-                    v => showHelp = true},
-            };
+            //attach console service to logger
+            LogService lserv = new LogService();
+            logger.Output += lserv.OnLoggerLog;
 
-            List<string> parseErrors = new List<string>();
+            //new parser
+            ArgumentParser argParser = new ArgumentParser(args);
+            
+            //parse arguments
             try
             {
-                parseErrors = argSet.Parse(args);
+                argParser.Parse();
             }
-            catch (OptionException e)
+            catch (OptionException)
             {
-                Utils.HelpText(String.Format(Properties.Settings.Default.Text_ErrArgumentErrors + e.Message));
-                CloseFormal(1);
+                logger.OnLogAction(LoggerEventArgs.LogPriority.CONSOLE, LoggerEventArgs.LogFlags.INFO | LoggerEventArgs.LogFlags.APP | LoggerEventArgs.LogFlags.ARGUMENTS, argParser.GetHelpDescriptions());
+                foreach (string error in argParser.Errors)
+                {
+                    logger.OnLogAction(LoggerEventArgs.LogPriority.CONSOLE, LoggerEventArgs.LogFlags.ERROR, error);
+                }
+                CloseFormal(logger, argParser.Silent, 1);
             }
 
-            if (showHelp)
+            //show help message if set
+            if (argParser.Help)
             {
-                Utils.HelpText(null);
-                CloseFormal(0);
+                logger.OnLogAction(LoggerEventArgs.LogPriority.CONSOLE,LoggerEventArgs.LogFlags.INFO, argParser.GetHelpDescriptions());
+                CloseFormal(logger, argParser.Silent, 0);
             }
 
-            //resources
-            string configName = customConfigPath ?? "config.json";
-            string configPath = IO.Combine(IO.ExecutingDir, configName);
-            string res_config = IO.ReadTextFile(configPath) ?? "";
-
-            //ensure config file exists
-            if (!IO.Exists(configPath))
-            {
-                Logger.Out(String.Format(Properties.Settings.Default.Text_ErrConfigMissing,configPath), 0, Utils.TextTags[0], Utils.TextTags[1], Utils.TextTags[2]);
-                CloseFormal(0);
-            }
+            //set logging settings
+            lserv.Debug = argParser.Debug;
+            lserv.Silent = argParser.Silent;
 
             //starting text comments
             Console.Title = Properties.Settings.Default.ProductFriendlyName + " v" + Utils.ProductVersion;
 
-            Logger.Out(Properties.Settings.Default.Text_Separator, 0);
-            Console.ForegroundColor = ConsoleColor.White;
-            Logger.Out(String.Format(Properties.Settings.Default.Text_Welcome, Properties.Settings.Default.ProductFriendlyName, Utils.ProductVersion), 0);
-            Logger.Out(Properties.Settings.Default.Text_Licence, 0);
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Logger.Out(Properties.Settings.Default.Text_Separator, 0);
-            Logger.Out(Properties.Settings.Default.Text_ReadingConfig, 0, Utils.TextTags[0]);
+            //config path
+            string configPath = IO.Combine(IO.ExecutingDir, "config.json");
+            string configText = IO.ReadTextFile(configPath);
+
+            //msg welcome
+            logger.OnLogAction(LoggerEventArgs.LogPriority.BOTH, LoggerEventArgs.LogFlags.INFO, String.Format(Properties.Settings.Default.Text_Welcome, Properties.Settings.Default.ProductFriendlyName, Utils.ProductVersion));
+            logger.OnLogAction(LoggerEventArgs.LogPriority.BOTH, LoggerEventArgs.LogFlags.INFO, Properties.Settings.Default.Text_Licence);
+            logger.OnLogAction(LoggerEventArgs.LogPriority.CONSOLE, LoggerEventArgs.LogFlags.APP, Properties.Settings.Default.Text_Separator);
+
+            //msg reading config
+            logger.OnLogAction(LoggerEventArgs.LogPriority.BOTH, LoggerEventArgs.LogFlags.DEBUG, Properties.Settings.Default.Text_ReadingConfig);
+
+            //ensure config file exists
+            if (!IO.Exists(configPath))
+            {
+                logger.OnLogAction(LoggerEventArgs.LogPriority.BOTH, LoggerEventArgs.LogFlags.ERROR, String.Format(Properties.Settings.Default.Text_ErrConfigMissing, configPath));
+                CloseFormal(logger, argParser.Silent, 0);
+            }
+
+            //ensure config file isnt empty
+            if (String.IsNullOrWhiteSpace(configText))
+            {
+                logger.OnLogAction(LoggerEventArgs.LogPriority.BOTH, LoggerEventArgs.LogFlags.ERROR, Properties.Settings.Default.Text_ConfEmpty);
+            }
 
             //configuration settings
-            ConfigReader cfg = new ConfigReader(res_config);
+            ConfigReader configuration = new ConfigReader(configText);
 
             //populate config list with pairs from config file
             try
             {
-                cfg.Parse();
+                configuration.Parse();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Logger.Out(Properties.Settings.Default.Text_ErrConfigSyntax + e.Message, 0, Utils.TextTags[0], Utils.TextTags[1], Utils.TextTags[2]);
-                CloseFormal(0);
-            }
-
-            if (cfg.Config.version != Utils.ProductVersion)
-            {
-                Logger.Out(String.Format(Properties.Settings.Default.Text_ErrConfigVersionMismatch, Utils.ProductVersion, cfg.Config.version), 0, Utils.TextTags[0], Utils.TextTags[1], Utils.TextTags[2]);
-                CloseFormal(0);
+                logger.OnLogAction(LoggerEventArgs.LogPriority.BOTH, LoggerEventArgs.LogFlags.ERROR, Properties.Settings.Default.Text_ErrConfigSyntax);
+                CloseFormal(logger, argParser.Silent, 0);
             }
 
-            Logger.Out(Properties.Settings.Default.Text_ConfigReadSuccess, 0, Utils.TextTags[0]);
-
-            if (uninstallMode)
+            //ensure configuration is of a supported layout
+            if (configuration.Config.layoutVersion != 1)
             {
-                Logger.Out(Properties.Settings.Default.Text_NotImplemented, 0);
-                CloseFormal(0);
+                logger.OnLogAction(LoggerEventArgs.LogPriority.BOTH, LoggerEventArgs.LogFlags.ERROR, Properties.Settings.Default.Text_ErrConfigVersionMismatch);
+                CloseFormal(logger, argParser.Silent, 0);
+            }
+
+            //msg config parse success
+            logger.OnLogAction(LoggerEventArgs.LogPriority.BOTH, LoggerEventArgs.LogFlags.DEBUG, Properties.Settings.Default.Text_ConfigReadSuccess);
+
+            //if set to uninstall
+            if (argParser.Uninstall)
+            {
+                //TODO uninstaller
+                //Properties.Settings.Default.Text_NotImplemented
+                CloseFormal(logger, argParser.Silent, 0);
             }
             else
             {
-                string res_profile = IO.Combine(IO.ExecutingDir, customDataPath ?? "profile.zip");
+                string profileDataPath = IO.Combine(IO.ExecutingDir, "profile.zip");
 
                 //ensure profile.zip exists
-                if (!IO.Exists(res_profile))
+                if (!IO.Exists(profileDataPath))
                 {
-                    Logger.Out(Properties.Settings.Default.Text_ErrProfileMissing, 0, Utils.TextTags[0], Utils.TextTags[4]);
-                    CloseFormal(0);
+                    logger.OnLogAction(LoggerEventArgs.LogPriority.BOTH, LoggerEventArgs.LogFlags.ERROR, Properties.Settings.Default.Text_ErrProfileMissing);
+                    CloseFormal(logger, argParser.Silent, 0);
                 }
 
                 //confim installation
-                Logger.Out(Properties.Settings.Default.Text_Separator, 1);
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Logger.Out(String.Format(Properties.Settings.Default.Text_InstallConfirmation, cfg.Config.friendlyName, Utils.StringArrayToFormatted(cfg.Config.authors), cfg.Config.mapVersion), 1);
-                Console.ForegroundColor = ConsoleColor.White;
-                Logger.Out(Properties.Settings.Default.Text_InstallNoticeGameSave, 1);
-                Console.ForegroundColor = ConsoleColor.Gray;
-                Logger.Out(Properties.Settings.Default.Text_Separator, 1);
+                logger.OnLogAction(LoggerEventArgs.LogPriority.BOTH, LoggerEventArgs.LogFlags.NOTICE, String.Format(Properties.Settings.Default.Text_InstallConfirmation, configuration.Config.friendlyName, Utils.StringArrayToFormatted(configuration.Config.authors), configuration.Config.mapVersion));
+                logger.OnLogAction(LoggerEventArgs.LogPriority.CONSOLE, LoggerEventArgs.LogFlags.IMPORANT, Properties.Settings.Default.Text_InstallNoticeGameSave);
 
-                if (Utils.LoopingReadKeyConfirm(silent) == true)
+                if (Utils.LoopingReadKeyConfirm(argParser.Silent) == true)
                 {
-                    BeginInstallation(cfg, res_profile);
+                    //close the game launcher if open
+                    Utils.CloseLauncher();
+                    //space out user input with new line
+                    Console.WriteLine(Environment.NewLine);
+                    //create new installer intance
+                    Installer installer = new Installer(configuration, profileDataPath);
+                    installer.Output += lserv.OnLoggerLog;
+                    //have the thread take on the work of the installer
+                    Thread install = new Thread(() => installer.Install());
+                    install.Start();
+                    install.Join();
+                    if (installer.Status == Installer.ActionStatus.SUCCESS)
+                    {
+                        //show webpage
+                        if (configuration.Config.showWebpages)
+                        {
+                            Utils.OpenWebpage(configuration.Config.webpageInstalled);
+                        }
+                    }
+                    if (installer.Status == Installer.ActionStatus.ABORTED)
+                    {
+                        logger.OnLogAction(LoggerEventArgs.LogPriority.BOTH, LoggerEventArgs.LogFlags.NOTICE, String.Format(Properties.Settings.Default.Text_InstAborted, Utils.ProductVersion, configuration.Config.friendlyName));
+                    }
+                }
+                else
+                {
+                    Console.WriteLine(Environment.NewLine);
                 }
             }
-            CloseFormal(0);
+            CloseFormal(logger, argParser.Silent, 0);
         }
 
-        private static void BeginInstallation(ConfigReader cfg, string dataPath)
-        {
-            //close the game launcher if open
-            Utils.CloseLauncher();
-            //space out user input with new line
-            Logger.Out(Environment.NewLine, 1);
-
-            //create new installer intance
-            Installer installer = new Installer(cfg, dataPath);
-            //have the thread take on the work of the installer
-            Thread install = new Thread(() => installer.Install());
-            install.Start();
-            install.Join();
-            //when completed, show webpage
-            if (cfg.Config.showWebpages)
-            {
-                Utils.OpenWebpage(cfg.Config.webpageInstalled);
-            }
-        }
-
-        public static void CloseFormal(int code)
+        /// <summary>
+        /// Close application with custom termination message
+        /// </summary>
+        /// <param name="code">exit code</param>
+        public static void CloseFormal(LoggableAction logger, bool bypass, int code)
         {
             //thanks message
             Console.ForegroundColor = ConsoleColor.Magenta;
-            Logger.Out(String.Format(Environment.NewLine + Properties.Settings.Default.Text_Thanks, Properties.Settings.Default.ProductFriendlyName, Utils.ProductVersion), 1);
+            logger.OnLogAction(LoggerEventArgs.LogPriority.BOTH, LoggerEventArgs.LogFlags.INFO, String.Format(Properties.Settings.Default.Text_Thanks, Properties.Settings.Default.ProductFriendlyName, Utils.ProductVersion));
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.ReadKey();
+            if (!bypass)
+                Console.ReadKey();
             Environment.Exit(code);
         }
     }

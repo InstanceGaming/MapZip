@@ -82,27 +82,15 @@ namespace mapzip
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
-        public static void HelpText(string errors)
-        {
-            string[] helpRaw = Properties.Settings.Default.Text_ArgumentsHelpText.Split('@');
-
-            foreach (string line in helpRaw)
-            {
-                Logger.Out(line, 1, TextTags[6]);
-            }
-
-            if (errors != null)
-            {
-                Logger.Out(Environment.NewLine + "Argument parser outputed the following message(s):" + Environment.NewLine,1);
-                Logger.Out(errors,1);
-            }
-        }
-
         public static bool LoopingReadKeyConfirm(bool bypass)
         {
+            if (bypass)
+            {
+                return true;
+            }
             //wait for user input to begin install
             ConsoleKey key = Console.ReadKey().Key;
-            if (key == ConsoleKey.Y && !bypass)
+            if (key == ConsoleKey.Y)
             {
                 return true;
             }
@@ -116,8 +104,7 @@ namespace mapzip
         {
             if (!JsonSchema.Schema.TryGetValue(name, out string value))
             {
-                Logger.Out(String.Format(Properties.Settings.Default.Text_ErrSchemaNameMissing, name), 0, TextTags[1]);
-                Program.CloseFormal(-1);
+                throw new InvalidOperationException("Schema name not found in array.");
             }
             return value;
         }

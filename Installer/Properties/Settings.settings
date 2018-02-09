@@ -18,19 +18,16 @@
       <Value Profile="(Default)">Config file empty or syntax malformed; Please report this to the mapmaker. Raw message: </Value>
     </Setting>
     <Setting Name="Text_ErrConfigVersionMismatch" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Config file version mismatch. Application version {0}, config verision {1}. Please report this to the mapmaker.</Value>
+      <Value Profile="(Default)">Config file layout mismatch. Local layout version 1, config verision {0}. Please report this to the mapmaker.</Value>
     </Setting>
     <Setting Name="Text_ConfigReadSuccess" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Config file parsed with no errors.</Value>
-    </Setting>
-    <Setting Name="Text_LicenceAgreementHeader" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Licence Agreement</Value>
     </Setting>
     <Setting Name="Text_InstallConfirmation" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Are you sure you want to install the map "{0}" by {1} (v{2})? (Y or N)</Value>
     </Setting>
     <Setting Name="Text_InstallNoticeGameSave" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Tip: Save your game as it will be closed forcibly if not exited now.</Value>
+      <Value Profile="(Default)">!!! Save your game as it will be closed forcibly if not exited now. !!!</Value>
     </Setting>
     <Setting Name="Text_Thanks" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Thanks for using {0} v{1}! Press any key to exit...</Value>
@@ -78,7 +75,7 @@
       <Value Profile="(Default)">Adding new profile to launcher.</Value>
     </Setting>
     <Setting Name="Text_InstCreatingProfile" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Creating map profile.</Value>
+      <Value Profile="(Default)">Updating launcher profiles list.</Value>
     </Setting>
     <Setting Name="Text_InstUnzippingProfile" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Unzipping internal profile copy.</Value>
@@ -95,8 +92,20 @@
     <Setting Name="Text_ConfEmpty" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Config file was empty. Please report this to the mapmaker.</Value>
     </Setting>
-    <Setting Name="Text_ErrSchemaNameMissing" Type="System.String" Scope="User">
+    <Setting Name="Text_ErrSchemaNameMissing" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Could not find schema name "{0}" in dictionary. Please report this to the mapmaker and developer.</Value>
+    </Setting>
+    <Setting Name="Text_ErrLauncherLayoutMismatch" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Launcher profiles structure version mismatch. Please report this to the mapmaker and developer.</Value>
+    </Setting>
+    <Setting Name="Text_InstGameDirFound" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Found game directory.</Value>
+    </Setting>
+    <Setting Name="Text_InstAborted" Type="System.String" Scope="User">
+      <Value Profile="(Default)">The installer aborted operation unexpectedly. Please report this to the mapmaker including the installer version ({0}), the installer log file or console output, the map you are attempting to install ({1}) and your basic system info.</Value>
+    </Setting>
+    <Setting Name="Text_LauncherFileMissing" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Launcher configuration file was not found. Please attempt to launch the Minecraft launcher first/again before running this installer.</Value>
     </Setting>
   </Settings>
 </SettingsFile>
